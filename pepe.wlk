@@ -5,61 +5,41 @@ object pepe {
     var bonoPresentismo = 0
     var faltas = 0
 
-    //SETTER DE SU CATEGORIA 
-    method categoriaPepe(categoria){
-        sueldoNeto = categoria.sueldoNeto()
-    }
-
-    //GETTER DE FALTAS / HACER QUE FALTE 
+    //acciones de pepe 
     method faltar(dias){
         faltas = faltas + dias 
     }
+    method calcularSueldo(){
+        sueldo = sueldoNeto + bonoResultados + bonoPresentismo
+    }
+    //setters pepe 
+     method categoriaPepe(categoria){
+        sueldoNeto = categoria.sueldoNeto()
+    }
+    method bonoPresentismo(_bonoPresentismo){
+        bonoPresentismo = _bonoPresentismo.valorBono()
+    }
+    method bonoResultados(_bonoresultados){
+        bonoResultados = _bonoresultados.valorBono()
+    }
+    //getters pepe
     method faltas(){
         return faltas 
     }
-
-    //GETTER DEL SUELDO / CLACULAR SUELDO
+    method sueldoNeto(){
+        return sueldoNeto
+    }
+    method bonoPresentismo(){
+        return bonoPresentismo
+    }
+    method bonoResultados(){
+        return bonoResultados
+    }
     method sueldo(){
-        return sueldo 
+        return sueldo
     }
-    method calcularSueldo(){
-      sueldo = sueldoNeto + bonoResultados + bonoPresentismo
-    }
-
-   //BONOS POR RESULTADOS 
-   method bonoPorcentaje(){
-    bonoResultados = sueldoNeto * 0.1 
-   }
-   method bonoMontoFijo(){
-    bonoResultados = 800
-   }
-
-   //BONOS POR PRESENTISMO
-   method bonoNormal(){
-    if(faltas == 0){
-        bonoPresentismo = 2000
-    }
-    if(faltas == 1){
-        bonoPresentismo = 1000 
-    }
-    else bonoPresentismo = 0
-   }
-
-   method bonoAjuste(){
-    if(faltas == 0){
-        bonoPresentismo = 100
-    }
-    else bonoPresentismo = 0
-   }
-
-   method bonoDemagogico(){
-    if(sueldoNeto < 18000){
-        bonoPresentismo = 500
-    }
-    else bonoPresentismo = 300
-   }
-
 }
+// roles 
 object cadete{
     const sueldoNeto = 15000
 
@@ -74,3 +54,64 @@ object gerente{
         return sueldoNeto
     }
 }
+//bonos por resultado 
+object bonoPorcentaje{
+    var valorBono = 0
+
+    method valorBono(empleado){
+        valorBono = empleado.sueldoNeto() * 0.1 
+    }
+    method valorBono(){
+        return valorBono
+    }
+}
+object bonoMontoFijo{
+    const valorBono = 800
+
+    method valorBono(){
+        return valorBono
+    }
+}
+object bonoNulo{
+//este objeto se comparte para los dos tipos de 
+//bonos 
+    const valorBono = 0
+
+    method valorBono(){
+        return valorBono
+    }
+}
+//bonos por presentismo
+object bonoNormal{
+    var valorBono = 0
+
+    method valorBono(empleado){
+        if(empleado.faltas() == 0){
+            valorBono = 2000
+        }
+        else(empleado.faltas() == 1){
+            valorBono = 1000
+        }
+    }
+    method valorBono(){
+        return valorBono
+    }
+}
+object bonoDemagogico{
+    var valorBono = 0
+
+    method valorBono(empleado){
+        if(empleado.sueldoNeto() < 18000){
+            valorBono = 500
+        }
+        else{
+            valorBono = 300
+        }
+        return valorBono
+    }
+    method valorBono(){
+        return valorBono
+    }
+}
+
+
