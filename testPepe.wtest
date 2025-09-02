@@ -1,10 +1,46 @@
 import pepe.*
 
-describe "Sueldo Pepe" {
-	
-	test "Test 1" {
-		//TODO: Implementame
+describe "Sueldo Pepe Test 1" {
+	method initialize(){
+		pepe.categoriaPepe(cadete)
+		pepe.faltar(3)
+		pepe.bonoPresentismo(bonoNormal)
+		pepe.bonoResultados(bonoMontoFijo)
 	}
-
 	
+	test "Caso 1" {
+		assert.equals(20800, pepe.calcularSueldo())
+	}
+}
+describe "Sueldo Pepe Caso 2" {
+	method initialize(){
+		pepe.categoriaPepe(gerente)
+		pepe.bonoResultados(bonoPorcentaje)
+		pepe.bonoPresentismo(bonoNulo)
+	}
+  test "Caso 2" {
+		assert.equals(16500, pepe.calcularSueldo())
+	
+  }
+}
+describe "Sueldo Pepe Test 3" {
+	method initialize(){
+		pepe.categoriaPepe(cadete)
+		pepe.bonoResultados(bonoPorcentaje)
+		pepe.bonoPresentismo(bonoNormal)
+	}
+  test "Caso 3" {
+		assert.equals(24000, pepe.calcularSueldo())
+  }
+}
+describe "Sueldo de Pepe Test 4" {
+	method initialize(){
+		pepe.categoriaPepe(cadete)
+		pepe.faltar(1)
+		pepe.bonoResultados(bonoPorcentaje)
+		pepe.bonoPresentismo(bonoNormal)
+	}
+  test "Caso 4" {
+	assert.equals(23000,pepe.calcularSueldo())
+  }
 }
