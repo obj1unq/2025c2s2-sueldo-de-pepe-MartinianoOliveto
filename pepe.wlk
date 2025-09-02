@@ -53,7 +53,6 @@ object gerente{
     method sueldoNeto(){
         return sueldoNeto
     }
-<<<<<<< HEAD
 }
 //bonos por resultado 
 object bonoPorcentaje{
@@ -113,6 +112,4 @@ object bonoDemagogico{
     method valorBono(){
         return valorBono
     }
-=======
->>>>>>> e0e1dffe4a5142b678fd5f5041548c08caa87750
 }
