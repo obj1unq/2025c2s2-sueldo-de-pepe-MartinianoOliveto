@@ -18,10 +18,10 @@ object pepe {
         sueldoNeto = categoria.sueldoNeto()
     }
     method bonoPresentismo(_bonoPresentismo){
-        bonoPresentismo = _bonoPresentismo.valorBono()
+        bonoPresentismo = _bonoPresentismo.valorBono(self)
     }
     method bonoResultados(_bonoresultados){
-        bonoResultados = _bonoresultados.valorBono()
+        bonoResultados = _bonoresultados.valorBono(self)
     }
     //getters pepe
     method faltas(){
@@ -42,14 +42,14 @@ object pepe {
 }
 // roles 
 object cadete{
-    const sueldoNeto = 15000
+    const sueldoNeto = 20000
 
     method sueldoNeto(){
         return sueldoNeto
     }
 }
 object gerente{
-    const sueldoNeto = 20000
+    const sueldoNeto = 15000
 
     method sueldoNeto(){
         return sueldoNeto
@@ -61,15 +61,16 @@ object bonoPorcentaje{
 
     method valorBono(empleado){
         valorBono = empleado.sueldoNeto() * 0.1 
-    }
-    method valorBono(){
         return valorBono
     }
+   /* method valorBono(){
+        return valorBono
+    }*/
 }
 object bonoMontoFijo{
     const valorBono = 800
 
-    method valorBono(){
+    method valorBono(empleado){
         return valorBono
     }
 }
@@ -78,7 +79,7 @@ object bonoNulo{
 //bonos 
     const valorBono = 0
 
-    method valorBono(){
+    method valorBono(empleado){
         return valorBono
     }
 }
@@ -90,13 +91,14 @@ object bonoNormal{
         if(empleado.faltas() == 0){
             valorBono = 2000
         }
-        else(empleado.faltas() == 1){
+        else if(empleado.faltas() == 1){
             valorBono = 1000
         }
-    }
-    method valorBono(){
         return valorBono
     }
+   /* method valorBono(){
+        return valorBono
+    }*/
 }
 object bonoDemagogico{
     var valorBono = 0
@@ -110,7 +112,7 @@ object bonoDemagogico{
         }
         return valorBono
     }
-    method valorBono(){
+   /* method valorBono(){
         return valorBono
-    }
+    }*/
 }
