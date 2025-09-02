@@ -11,6 +11,7 @@ object pepe {
     }
     method calcularSueldo(){
         sueldo = sueldoNeto + bonoResultados + bonoPresentismo
+        return sueldo
     }
     //setters pepe 
      method categoriaPepe(categoria){
